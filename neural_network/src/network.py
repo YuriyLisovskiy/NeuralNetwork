@@ -31,17 +31,20 @@ class NeuralNetwork(object):
 		outputs = []
 		res = inputs
 		outputs.append(inputs)
+
 		for weight in self.weights:
 			res = np.dot(weight, res)
 			res = self.sigmoid_mapper(res)
 			outputs.append(res)
+
 		actual_predict = res[0]
 		weights_index = len(self.weights) - 1
-		j = len(outputs) - 2
+		outputs_index = len(outputs) - 2
 		error_layer = np.array([actual_predict - expected_predict])
 		weights_delta = error_layer * self.derivative_of_sigmoid(actual_predict)
-		self.weights[weights_index] -= (np.dot(weights_delta, outputs[j].reshape(1, len(outputs[j])))) * self.learning_rate
-		for i in range(weights_index, 0, -1):
+		self.weights[weights_index] -= (np.dot(weights_delta, outputs[outputs_index].reshape(1, len(outputs[outputs_index])))) * self.learning_rate
+
+		for i, j in zip(range(weights_index, 0, -1), range(outputs_index, 0, -1)):
 			error_layer = weights_delta * self.weights[i]
 			weights_delta = error_layer * self.derivative_of_sigmoid(outputs[j])
 			self.weights[i - 1] -= np.dot(outputs[j - 1].reshape(len(outputs[j - 1]), 1), weights_delta).T * self.learning_rate
