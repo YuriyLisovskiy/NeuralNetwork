@@ -4,9 +4,11 @@ import numpy as np
 
 class NeuralNetwork(object):
 
-	def __init__(self, learning_rate=0.1):
-		self.weights_0_1 = np.random.normal(0.0, 2 ** -0.5, (8, 3))
-		self.weights_1_2 = np.random.normal(0.0, 1, (1, 8))
+	weights = []
+
+	def __init__(self, layers, learning_rate=0.1):
+		for i in range(len(layers) - 1):
+			self.weights.append(np.random.normal(0.0, 2 ** -0.5, (layers[i + 1], layers[i])))
 		self.sigmoid_mapper = np.vectorize(self.sigmoid)
 		self.learning_rate = [learning_rate]
 
@@ -15,27 +17,30 @@ class NeuralNetwork(object):
 		return 1 / (1 + np.exp(-x))
 
 	def predict(self, inputs):
-		inputs_1 = np.dot(self.weights_0_1, inputs)
-		outputs_1 = self.sigmoid_mapper(inputs_1)
-		inputs_2 = np.dot(self.weights_1_2, outputs_1)
-		outputs_2 = self.sigmoid_mapper(inputs_2)
-		return outputs_2
+		res = inputs
+		for weight in self.weights:
+			res = np.dot(weight, res)
+			res = self.sigmoid_mapper(res)
+		return res
 
 	def train(self, inputs, expected_predict):
-		inputs_1 = np.dot(self.weights_0_1, inputs)
-		outputs_1 = self.sigmoid_mapper(inputs_1)
-
-		inputs_2 = np.dot(self.weights_1_2, outputs_1)
-
-		outputs_2 = self.sigmoid_mapper(inputs_2)
-		actual_predict = outputs_2[0]
-
-		error_layer_2 = np.array([actual_predict - expected_predict])
-		gradient_layer_2 = actual_predict * (1 - actual_predict)
-		weights_delta_layer_2 = error_layer_2 * gradient_layer_2
-		self.weights_1_2 -= (np.dot(weights_delta_layer_2, outputs_1.reshape(1, len(outputs_1)))) * self.learning_rate
-
-		error_layer_1 = weights_delta_layer_2 * self.weights_1_2
-		gradient_layer_1 = outputs_1 * (1 - outputs_1)
-		weights_delta_layer_1 = error_layer_1 * gradient_layer_1
-		self.weights_0_1 -= np.dot(inputs.reshape(len(inputs), 1), weights_delta_layer_1).T * self.learning_rate
+		outputs = []
+		res = inputs
+		outputs.append(inputs)
+		for weight in self.weights:
+			res = np.dot(weight, res)
+			res = self.sigmoid_mapper(res)
+			outputs.append(res)
+		actual_predict = res[0]
+		index = len(self.weights) - 1
+		j = len(outputs) - 2
+		error_layer = np.array([actual_predict - expected_predict])
+		gradient_layer = actual_predict * (1 - actual_predict)
+		weights_delta = error_layer * gradient_layer
+		self.weights[index] -= (np.dot(weights_delta, outputs[j].reshape(1, len(outputs[j])))) * self.learning_rate
+		for i in range(index, 0, -1):
+			error_layer = weights_delta * self.weights[i]
+			gradient_layer = outputs[j] * (1 - outputs[j])
+			weights_delta = error_layer * gradient_layer
+			self.weights[i - 1] -= np.dot(outputs[j - 1].reshape(len(outputs[j - 1]), 1), weights_delta).T * self.learning_rate
+			j -= 1

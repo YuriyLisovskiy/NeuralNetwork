@@ -1,11 +1,6 @@
-from neural_network.src.config import config
-from neural_network.src import network
 import numpy as np
-import sys
-
-
-def MSE(y, Y):
-	return np.mean((y - Y)**2)
+from neural_network.src import network
+from neural_network.src.config.config import LEARNING_RATE
 
 train = [
 	([0, 0, 0], 0),
@@ -18,18 +13,16 @@ train = [
 	([1, 1, 1], 1)
 ]
 
-net = network.NeuralNetwork(learning_rate=config.LEARNING_RATE)
+net = network.NeuralNetwork(layers=[3, 2, 1], learning_rate=LEARNING_RATE)
 
 
-def training():
-	for e in range(config.EPOCHS):
-		inputs = []
-		correct_predictions = []
-		for input_stat, correct_predict in train:
-			net.train(np.array(input_stat), correct_predict)
-			inputs.append(np.array(input_stat))
-			correct_predictions.append(np.array(correct_predict))
+def test_with_bool(neural_net, training_data):
+	for input_stat, correct_predict in training_data:
+		print("For input: {} the prediction is: {}, expected: {}".format(str(input_stat),
+			str(neural_net.predict(np.array(input_stat)) > 0.5), str(correct_predict == 1)))
 
-		train_loss = MSE(net.predict(np.array(inputs).T), np.array(correct_predictions))
-		sys.stdout.write("\rProgress: {}%, Training loss: {}".format(str(100 * e / float(config.EPOCHS))[:4], str(train_loss)[:5]))
-	print("")
+
+def test_with_numbers(neural_net, training_data):
+	for input_stat, correct_predict in training_data:
+		print("For input: {} the prediction is: {}, expected: {}".format(str(input_stat),
+			str(neural_net.predict(np.array(input_stat))), str(correct_predict == 1)))

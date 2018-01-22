@@ -1,19 +1,12 @@
-import numpy as np
-from neural_network.tests.test import training, train, net
+from neural_network.tests.test import train, net, test_with_bool, test_with_numbers
+from neural_network.src.training import training
 
 
 def main():
-	training()
+	training(net, train)
 
-	print("")
-
-	for input_stat, correct_predict in train:
-		print("For input: {} the prediction is: {}, expected: {}".format(str(input_stat), str(net.predict(np.array(input_stat)) > 0.5), str(correct_predict == 1)))
-
-	print("")
-
-	for input_stat, correct_predict in train:
-		print("For input: {} the prediction is: {}, expected: {}".format(str(input_stat), str(net.predict(np.array(input_stat))), str(correct_predict == 1)))
+	test_with_bool(net, train)
+	test_with_numbers(net, train)
 
 if __name__ == '__main__':
 	main()
