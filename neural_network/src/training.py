@@ -1,6 +1,6 @@
-from neural_network.src.config.config import EPOCHS
-import numpy as np
 import sys
+import numpy as np
+from neural_network.src.config.config import EPOCHS
 
 
 def MSE(y, Y):
@@ -18,4 +18,3 @@ def training(neural_net, training_data):
 
 		train_loss = MSE(neural_net.predict(np.array(inputs).T), np.array(correct_predictions))
 		sys.stdout.write("\rProgress: {}%, Training loss: {}".format(str(100 * e / float(EPOCHS))[:4], str(train_loss)[:5]))
-	print("")

@@ -4,8 +4,10 @@ from neural_network.src.training import training
 
 def main():
 	training(net, train)
+	print("")
 
 	test_with_bool(net, train)
+	print("")
 	test_with_numbers(net, train)
 
 if __name__ == '__main__':
