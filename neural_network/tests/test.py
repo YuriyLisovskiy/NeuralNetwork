@@ -13,7 +13,7 @@ train = [
 	([1, 1, 1], 1)
 ]
 
-net = network.NeuralNetwork(layers=[3, 2, 1], learning_rate=LEARNING_RATE)
+net = network.NeuralNetwork(layers=[3, 8, 1], learning_rate=LEARNING_RATE)
 
 
 def test_with_bool(neural_net, training_data):
