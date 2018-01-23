@@ -1,6 +1,6 @@
 import numpy as np
-from src.network import net
-from config.config import LEARNING_RATE, LAYERS
+from neural_network.src.network import net
+from neural_network.config.config import LEARNING_RATE, LAYERS
 
 
 train = [

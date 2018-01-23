@@ -1,10 +1,10 @@
 import sys
 import numpy as np
-from config.config import EPOCHS
+from neural_network.config.config import EPOCHS
 
 
-def MSE(y, Y):
-	return np.mean((y - Y)**2)
+def mse(y_1, y_2):
+	return np.mean((y_1 - y_2)**2)
 
 
 def training(neural_net, training_data):
@@ -13,10 +13,10 @@ def training(neural_net, training_data):
 		inputs = []
 		correct_predictions = []
 		for input_stat, correct_predict in training_data:
-			neural_net.train(np.array(input_stat), correct_predict)
+			neural_net.back_prop_train(np.array(input_stat), correct_predict)
 			inputs.append(np.array(input_stat))
 			correct_predictions.append(np.array(correct_predict))
 
-		train_loss = MSE(neural_net.predict(np.array(inputs).T), np.array(correct_predictions))
+		train_loss = mse(neural_net.predict(np.array(inputs).T), np.array(correct_predictions))
 		sys.stdout.write("\r Progress: {}%, Training loss: {}".format(str(100 * e / float(EPOCHS))[:4], str(train_loss)[:5]))
 	print("\n")

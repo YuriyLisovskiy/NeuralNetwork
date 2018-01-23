@@ -1,5 +1,5 @@
-from src.learning.training import training
-from tests.test import train, network, test_with_bool, test_with_numbers
+from neural_network.src.learning.training import training
+from neural_network.tests.test import train, network, test_with_bool, test_with_numbers
 
 
 def main():
@@ -8,6 +8,7 @@ def main():
 	print("Testing:")
 	test_with_bool(network, train)
 	test_with_numbers(network, train)
+
 
 if __name__ == '__main__':
 	main()

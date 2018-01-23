@@ -1,4 +1,3 @@
-from builtins import len
 import numpy as np
 
 
@@ -27,7 +26,7 @@ class NeuralNetwork(object):
 			res = self.sigmoid_mapper(res)
 		return res
 
-	def train(self, inputs, expected_predict):
+	def back_prop_train(self, inputs, expected_predict):
 		outputs = []
 		res = inputs
 		outputs.append(inputs)
