@@ -17,4 +17,6 @@ LEARNING_RATE = 0.007
 # A topology of network.
 
 # A size of an array indicates a number of network layers.
+# The first member of an array is a number of input connections,
+# The output is only one connection.
 LAYERS = [3, 8, 1]

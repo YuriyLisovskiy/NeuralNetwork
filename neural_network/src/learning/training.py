@@ -4,7 +4,7 @@ from neural_network.config.config import EPOCHS
 
 
 def mse(y_1, y_2):
-	return np.mean((y_1 - y_2)**2)
+	return np.mean((y_1 - y_2) ** 2)
 
 
 def training(neural_net, training_data):
@@ -14,7 +14,7 @@ def training(neural_net, training_data):
 		inputs = []
 		correct_predictions = []
 		for input_stat, correct_predict in training_data:
-			neural_net.back_prop_train(np.array(input_stat), correct_predict)
+			neural_net.back_prop_train(np.array(input_stat), np.array(correct_predict))
 			inputs.append(np.array(input_stat))
 			correct_predictions.append(np.array(correct_predict))
 
