@@ -8,6 +8,7 @@ def mse(y_1, y_2):
 
 
 def training(neural_net, training_data):
+	train_loss = None
 	print("\nTraining:")
 	for e in range(EPOCHS):
 		inputs = []
@@ -18,5 +19,7 @@ def training(neural_net, training_data):
 			correct_predictions.append(np.array(correct_predict))
 
 		train_loss = mse(neural_net.predict(np.array(inputs).T), np.array(correct_predictions))
-		sys.stdout.write("\r Progress: {}%, Training loss: {}".format(str(100 * e / float(EPOCHS))[:4], str(train_loss)[:5]))
-	print("\n")
+		sys.stdout.write(
+			"\r Progress: {}%, Training loss: {}".format(str(100 * e / float(EPOCHS))[:4], str(train_loss)[:5]))
+	sys.stdout.write(
+		"\r Progress: 100%, Training loss: {}\nDone.\n\n".format(str(train_loss)[:5]))
