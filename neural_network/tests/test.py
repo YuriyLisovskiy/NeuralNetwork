@@ -1,6 +1,6 @@
-import numpy as np
 from neural_network.src.network import net
 from neural_network.config.config import LEARNING_RATE, LAYERS
+from .unittest import test_case_1
 
 
 train = [
@@ -17,15 +17,9 @@ train = [
 network = net.NeuralNetwork(layers=LAYERS, learning_rate=LEARNING_RATE)
 
 
-def test_with_bool(neural_net, training_data):
-	for input_stat, correct_predict in training_data:
-		print(" For input: {} the prediction is: {}, expected: {}".format(str(input_stat),
-			str(neural_net.predict(np.array(input_stat)) > 0.5), str(correct_predict == 1)))
-	print("")
-
-
-def test_with_numbers(neural_net, training_data):
-	for input_stat, correct_predict in training_data:
-		print(" For input: {} the prediction is: {}, expected: {}".format(str(input_stat),
-			str(neural_net.predict(np.array(input_stat))), str(correct_predict == 1)))
-	print("")
+def run(neural_net, training_data):
+	print("Testing:")
+	test_case_1.test_with_bool(neural_net=neural_net, training_data=training_data)
+	print("\n")
+	test_case_1.test_with_numbers(neural_net=neural_net, training_data=training_data)
+	print("\n")
