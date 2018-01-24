@@ -1,2 +1,2 @@
 # NeuralNetwork
-[![Build Status](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork.svg?branch=dev)](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork)
+[![Build Status](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork.svg)](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork)
