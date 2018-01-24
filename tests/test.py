@@ -1,4 +1,4 @@
-from neural_network.src.network import net
+from neural_network.network import net
 from neural_network.config.config import LEARNING_RATE, LAYERS
 from .unittest import test_case_1
 
