@@ -9,7 +9,6 @@ def mse(y_1, y_2):
 
 def training(neural_net, training_data):
 	train_loss = None
-	print("\nTraining:")
 	for e in range(EPOCHS):
 		inputs = []
 		correct_predictions = []

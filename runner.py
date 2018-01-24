@@ -1,13 +1,10 @@
 import sys
-from neural_network.learning.training import training
-from tests.test import train, network
-from tests import test
+from tests import all_tests
 
 
 def main():
 	if 'test' in sys.argv:
-		training(network, train)
-		test.run(neural_net=network, training_data=train)
+		all_tests.run()
 
 
 if __name__ == '__main__':
