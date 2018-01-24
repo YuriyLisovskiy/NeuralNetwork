@@ -1,0 +1,12 @@
+# .coveragerc to control coverage.py
+
+[run]
+
+source =
+    neural_network
+
+omit =
+    *__init__.py*
+
+[html]
+    directory = coverage

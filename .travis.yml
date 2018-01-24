@@ -5,5 +5,11 @@ language: python
 python:
   - 3.6
 
+install:
+  - pip install coverage
+
 script:
-  - python runner.py test
+  - coverage run runner.py test
+
+after_success:
+  - coverage report
