@@ -11,7 +11,7 @@ NAME = 'neural_network'
 if CURRENT_PYTHON_VERSION < REQUIRED_PYTHON_VERSION:
     sys.stderr.write("""
 Unsupported Python version!
-This version of '{}' requires Python {}.{}, but you're trying to
+This version of '{}' requires Python {}.{}, but you are trying to
 install it on Python {}.{}.""".format(NAME, *REQUIRED_PYTHON_VERSION, *CURRENT_PYTHON_VERSION))
     sys.exit(1)
 
@@ -64,7 +64,7 @@ setup(
     author=AUTHOR,
     author_email=EMAIL,
     description=DESCRIPTION,
-    ong_description=LONG_DESCRIPTION,
+    long_description=LONG_DESCRIPTION,
     license=LICENCE,
     py_modules=[NAME],
     include_package_data=True,

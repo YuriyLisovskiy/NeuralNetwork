@@ -11,5 +11,4 @@ install:
 script:
   - coverage run runner.py test
 
-after_success:
-  - coverage report
+after_success: coverage report
