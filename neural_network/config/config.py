@@ -9,7 +9,7 @@ EPOCHS = 10000
 
 # Lower value causes low training speed but the network will be able to solve
 #   more common problems after learning.
-# Higher value causes high training speed and but the network will be able
+# Higher value causes high training speed and the network will be able
 #   to solve only problems from training case.
 LEARNING_RATE = 0.007
 

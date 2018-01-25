@@ -6,9 +6,10 @@ python:
   - 3.6
 
 install:
-  - pip install coverage
+  - pip install -r requirements.txt
 
 script:
   - coverage run runner.py test
 
-after_success: coverage report
+after_success:
+  - coveralls
