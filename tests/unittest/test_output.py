@@ -1,7 +1,7 @@
 import numpy as np
 import unittest
 from neural_network.network import net
-from neural_network.config.config import LEARNING_RATE, LAYERS
+from neural_network.config.config import LEARNING_RATE, LAYERS, EPOCHS
 from neural_network.learning.training import training
 
 """
@@ -39,14 +39,14 @@ class TestOutput(unittest.TestCase):
 		([1, 1, 1], 1)
 	]
 	neural_net = net.NeuralNetwork(layers=LAYERS, learning_rate=LEARNING_RATE)
-	training(neural_net=neural_net, training_data=training_data)
+	training(neural_net=neural_net, training_data=training_data, epochs=EPOCHS)
 
 	def make_predict(self, input_data):
 		return self.neural_net.predict(np.array(input_data))
 
 	def test_bool_result(self):
 		for input_data, correct_predict in self.training_data:
-			self.assertEqual(self.make_predict(input_data) > 0.5, np.array(correct_predict) == 1)
+			self.assertEqual(self.make_predict(input_data) >= 0.5, np.array(correct_predict) == 1)
 
 	def test_numbers_result(self):
 		pass
