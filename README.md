@@ -1,9 +1,8 @@
 # NeuralNetwork
-[![PyPi](https://img.shields.io/pypi/l/Django.svg)](LICENSE)
-[![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork)
-[![Build Status](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork)
-[![Coverage Status](https://coveralls.io/repos/github/YuriyLisovskiy/NeuralNetwork/badge.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork)
-### Download and prepare for using
+| **`Licence`** | **`Language`** | **`AppVeyor`** | **`Travis CI`** | **`Coveralls`** |
+|-----------------|---------------------|------------------|-------------------|---------------|
+| [![PyPi](https://img.shields.io/pypi/l/Django.svg)](LICENSE) | [![PyPI](https://img.shields.io/badge/python-3.5%2C%203.6-blue.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork) | [![Build status](https://ci.appveyor.com/api/projects/status/5akmau97m3tstmxn?svg=true)](https://ci.appveyor.com/project/YuriyLisovskiy/neuralnetwork) | [![Build Status](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork) | [![Coverage Status](https://coveralls.io/repos/github/YuriyLisovskiy/NeuralNetwork/badge.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork) |
+## Installation
 Linux:
 ```bash
 $ git clone https://github.com/YuriyLisovskiy/NeuralNetwork.git
@@ -24,7 +23,7 @@ Run demo:
 ```bash
 $ python runner.py test
 ```
-### Usage
+## Usage
 - From `neural_network` package import network and training:
 	```python
 	from neural_network.network.net import NeuralNetwork
@@ -63,7 +62,7 @@ $ python runner.py test
     if __name__ == '__main__':
           print(get_prediction([0, 1, 0]))
     ```
-### Author
+## Author
 - **[Yuriy Lisovskiy](https://github.com/YuriyLisovskiy)**
-### License
+## License
 This project is licensed under the BSD-2-Clause License - see the [LICENSE](LICENSE) file for details.
