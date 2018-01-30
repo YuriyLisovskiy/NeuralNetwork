@@ -60,8 +60,6 @@ class TestOutput(unittest.TestCase):
 		self.assertGreaterEqual(self.make_predict(self.training_data[7][0]), 0.5)
 
 
-def run():
-	suite = unittest.TestSuite()
+def run(suite):
 	suite.addTest(TestOutput('test_bool_result'))
 	suite.addTest(TestOutput('test_numbers_result'))
-	unittest.TextTestRunner().run(suite)
