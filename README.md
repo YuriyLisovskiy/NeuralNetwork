@@ -1,5 +1,5 @@
 # NeuralNetwork
-| **`Licence`** | **`Language`** | **`AppVeyor`** | **`Travis CI`** | **`Coveralls`** |
+| **`License`** | **`Language`** | **`AppVeyor`** | **`Travis CI`** | **`Coveralls`** |
 |-----------------|---------------------|------------------|-------------------|---------------|
 | [![PyPi](https://img.shields.io/pypi/l/Django.svg)](LICENSE) | [![PyPI](https://img.shields.io/badge/python-3.5%2C%203.6-blue.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork) | [![Build status](https://ci.appveyor.com/api/projects/status/5akmau97m3tstmxn?svg=true)](https://ci.appveyor.com/project/YuriyLisovskiy/neuralnetwork) | [![Build Status](https://travis-ci.org/YuriyLisovskiy/NeuralNetwork.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork) | [![Coverage Status](https://coveralls.io/repos/github/YuriyLisovskiy/NeuralNetwork/badge.svg)](https://github.com/YuriyLisovskiy/NeuralNetwork) |
 ## Installation
