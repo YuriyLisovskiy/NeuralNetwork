@@ -2,7 +2,7 @@
 
 # Lower value increases training speed but causes low performance of network
 # Higher value decreases learning speed and increases network performance
-EPOCHS = 10000
+ITERATIONS = 10000
 
 
 # A parameter which indicates a speed of network training.
@@ -16,7 +16,13 @@ LEARNING_RATE = 0.007
 
 # A topology of network.
 
-# A size of an array indicates a number of network layers.
 # The first member of an array is a number of input connections,
-# The output is only one connection.
-LAYERS = [3, 8, 1]
+INPUT_LAYER = [3]
+
+# An amount of hidden layers.
+# Every next one should be less or equal to 2 to the power of previous layer connections, i.e.,
+# input layer is [3], then first hidden layer must be <= 2^3, second layer must be <= 2^(2^3), etc.
+HIDDEN_LAYERS = [8, 5]
+
+# The output has only one connection.
+OUTPUT_LAYER = [1]

@@ -1,16 +1,27 @@
 import unittest
 from neural_network.network import net
+from neural_network.config.config import INPUT_LAYER, HIDDEN_LAYERS, OUTPUT_LAYER
 
 
 class TestExceptions(unittest.TestCase):
 
 	def test_last_layer_exception(self):
 		with self.assertRaises(ValueError):
-			net.NeuralNetwork(layers=[3, 8, 2])
+			params = {
+				'input_layer': INPUT_LAYER,
+				'hidden_layers': HIDDEN_LAYERS,
+				'output_layer': [2]
+			}
+			net.NeuralNetwork(**params)
 		
 	def test_redundant_layers_exception(self):
 		with self.assertRaises(ValueError):
-			net.NeuralNetwork(layers=[3, 9, 1])
+			params = {
+				'input_layer': INPUT_LAYER,
+				'hidden_layers': [9],
+				'output_layer': OUTPUT_LAYER
+			}
+			net.NeuralNetwork(**params)
 
 
 def run(suite):

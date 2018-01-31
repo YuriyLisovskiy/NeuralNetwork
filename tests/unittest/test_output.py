@@ -1,8 +1,7 @@
 import numpy as np
 import unittest
 from neural_network.network import net
-from neural_network.config.config import LEARNING_RATE, LAYERS, EPOCHS
-from neural_network.learning.training import training
+from neural_network.config.config import LEARNING_RATE, ITERATIONS, INPUT_LAYER, HIDDEN_LAYERS, OUTPUT_LAYER
 
 """
 	training_data = [
@@ -38,8 +37,18 @@ class TestOutput(unittest.TestCase):
 		([1, 1, 0], 0),
 		([1, 1, 1], 1)
 	]
-	neural_net = net.NeuralNetwork(layers=LAYERS, learning_rate=LEARNING_RATE)
-	training(neural_net=neural_net, training_data=training_data, epochs=EPOCHS)
+	params = {
+		'input_layer': INPUT_LAYER,
+		'hidden_layers': HIDDEN_LAYERS,
+		'output_layer': OUTPUT_LAYER,
+		'learning_rate': LEARNING_RATE
+	}
+	neural_net = net.NeuralNetwork(**params)
+	params = {
+		'data': training_data,
+		'iterations': ITERATIONS
+	}
+	neural_net.train(**params)
 
 	def make_predict(self, input_data):
 		return self.neural_net.predict(np.array(input_data))
