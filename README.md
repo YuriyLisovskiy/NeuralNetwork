@@ -24,44 +24,58 @@ Run demo:
 $ python runner.py test
 ```
 ## Usage
-- From `neural_network` package import network and training:
+- From `neural_network` package import network:
 	```python
 	from neural_network.network.net import NeuralNetwork
-	from neural_network.learning.training import training
 	```
-- Create `training_data` for training neural network, example:
+- Create training data for training neural network, example:
 	```python
-    training_data = [
-	        ([0, 0, 0], 0),
-	        ([0, 0, 1], 1),
-	        ([0, 1, 0], 0),
-	        ([0, 1, 1], 0),
-	        ([1, 0, 0], 1),
-	        ([1, 0, 1], 1),
-	        ([1, 1, 0], 0),
-	        ([1, 1, 1], 1)
+	training_data = [
+	    ([0, 0, 0], 0),
+	    ([0, 0, 1], 1),
+	    ([0, 1, 0], 0),
+	    ([0, 1, 1], 0),
+	    ([1, 0, 0], 1),
+	    ([1, 0, 1], 1),
+	    ([1, 1, 0], 0),
+	    ([1, 1, 1], 1)
 	]
 	```
 - Create new neural network using `config/config.py` or custom parameters, example:
 	```python
-	EPOCHS = 10000
+	INPUT_LAYER = [3]
+	HIDDEN_LAYERS = [5, 4, 2]
+	OUTPUT_LAYER = [1]
+	ITERATIONS = 10000
 	LEARNING_RATE = 0.007
-	LAYERS = [3, 8, 1]
 	```
 	```python
-	new_net = NeuralNetwork(layers=LAYERS, learning_rate=LEARNING_RATE)
-	training(neural_net=new_net, training_data=training_data, epochs=EPOCHS)
+	new_net = NeuralNetwork(
+	    input_layer=INPUT_LAYER,
+	    hidden_layer=HIDDEN_LAYERS,
+	    output_layer=OUTPUT_LAYER,
+	    learning_rate=LEARNING_RATE,
+	    log=False
+	)
+	```
+- Train the network:
+	```python
+	new_net.train(
+	    data=training_data,
+	    iterations=ITERATIONS,
+	    log=False
+	)
 	```
 - Now network is ready to work, example:
-    ```python
-    def get_prediction(input_data):
-          result = new_net.make_predict(input_data)
-          return result >= 0.5
-    ```
-    ```python
-    if __name__ == '__main__':
-          print(get_prediction([0, 1, 0]))
-    ```
+	```python
+	def get_prediction(input_data):
+	    result = new_net.predict(input_data)
+	    return result >= 0.5
+	```
+	```python
+	if __name__ == '__main__':
+	    print(get_prediction([0, 1, 0]))
+	```
 ## Author
 - **[Yuriy Lisovskiy](https://github.com/YuriyLisovskiy)**
 ## License
