@@ -52,7 +52,7 @@ $ python runner.py test
 	```python
 	new_net = NeuralNetwork(
 	    input_layer=INPUT_LAYER,
-	    hidden_layer=HIDDEN_LAYERS,
+	    hidden_layers=HIDDEN_LAYERS,
 	    output_layer=OUTPUT_LAYER,
 	    learning_rate=LEARNING_RATE,
 	    log=False
